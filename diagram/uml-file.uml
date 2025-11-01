@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/hamza/IdeaProjects/ticketApp/src</OriginalElement>
+  <nodes>
+    <node x="1439.5" y="498.5">utility.ZonedDateTimeAdapter</node>
+    <node x="479.0" y="23.5">utility.Validatable</node>
+    <node x="2734.0" y="1803.5">exceptions.ScriptRecursionException</node>
+    <node x="4259.0" y="3138.5">utility.Runner.ExitCode</node>
+    <node x="2367.0" y="2890.5">commands.Save</node>
+    <node x="2585.0" y="2690.5">commands.Show</node>
+    <node x="1178.0" y="258.5">utility.LocalDateAdapter</node>
+    <node x="4221.0" y="2666.5">utility.Runner</node>
+    <node x="1238.5" y="2690.5">commands.CountGreaterThanDiscount</node>
+    <node x="503.0" y="270.5">utility.Element</node>
+    <node x="2792.0" y="2890.5">commands.PrintDescending</node>
+    <node x="867.0" y="436.5">models.Event</node>
+    <node x="-156.0" y="523.5">exceptions.InvalidFormException</node>
+    <node x="592.0" y="486.5">models.TicketType</node>
+    <node x="4591.0" y="1740.5">utility.Interrogator</node>
+    <node x="4008.0" y="2890.5">commands.Help</node>
+    <node x="1919.5" y="222.5">utility.console.Console</node>
+    <node x="2183.0" y="1790.5">commands.Exit</node>
+    <node x="3604.0" y="1728.5">managers.CommandManager</node>
+    <node x="938.5" y="2890.5">commands.RemoveLower</node>
+    <node x="3680.0" y="2890.5">commands.History</node>
+    <node x="232.0" y="511.5">exceptions.IncorrectInputInScriptException</node>
+    <node x="185.0" y="2690.5">commands.Insert</node>
+    <node x="3294.5" y="2890.5">commands.ReplaceIfLower</node>
+    <node x="1291.5" y="1138.5">managers.DumpManager</node>
+    <node x="59.5" y="222.5">models.Coordinates</node>
+    <node x="2361.0" y="1530.5">commands.ExecuteScript</node>
+    <node x="3070.5" y="2690.5">commands.Info</node>
+    <node x="4385.5" y="3283.5">exceptions.CollectionIsEmptyException</node>
+    <node x="1287.0" y="1644.5">managers.CollectionManager</node>
+    <node x="1054.0" y="-13.5">models.EventType</node>
+    <node x="-163.0" y="3270.5">Main</node>
+    <node x="846.5" y="818.5">models.forms.EventForm</node>
+    <node x="3057.5" y="1100.5">commands.Command</node>
+    <node x="2006.0" y="2890.5">commands.Clear</node>
+    <node x="526.5" y="1754.5">models.forms.TicketForm</node>
+    <node x="156.0" y="1803.5">exceptions.WrongAmountOfElementsException</node>
+    <node x="-94.0" y="2890.5">commands.RemoveKey</node>
+    <node x="397.5" y="956.5">models.Ticket</node>
+    <node x="536.5" y="2890.5">commands.FilterStartsWithName</node>
+    <node x="4.5" y="1138.5">models.forms.CoordinatesForm</node>
+    <node x="1680.0" y="2890.5">commands.Update</node>
+    <node x="4539.5" y="2829.5">utility.console.StandardConsole</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="models.forms.EventForm" target="exceptions.InvalidFormException" relationship="CREATE">
+      <point x="-56.75" y="-56.5" />
+      <point x="903.25" y="735.0" />
+      <point x="180.0" y="735.0" />
+      <point x="180.0" y="715.0" />
+      <point x="-40.0" y="715.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="models.forms.CoordinatesForm" relationship="CREATE">
+      <point x="-56.75" y="-80.5" />
+      <point x="583.25" y="1695.0" />
+      <point x="340.0" y="1695.0" />
+      <point x="340.0" y="1475.0" />
+      <point x="-20.0" y="1475.0" />
+      <point x="-20.0" y="1095.0" />
+      <point x="82.25" y="1095.0" />
+      <point x="-77.75" y="-56.5" />
+    </edge>
+    <edge source="commands.FilterStartsWithName" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="720.0" y="2615.0" />
+      <point x="1580.0" y="2615.0" />
+      <point x="1580.0" y="2335.0" />
+      <point x="1740.0" y="2335.0" />
+      <point x="1740.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Clear" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-67.0" y="-44.5" />
+      <point x="2073.0" y="2855.0" />
+      <point x="1960.0" y="2855.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.FilterStartsWithName" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-122.33333333333337" y="-44.5" />
+      <point x="597.6666666666666" y="2575.0" />
+      <point x="320.0" y="2575.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.Help" target="commands.Command" relationship="GENERALIZATION">
+      <point x="-66.0" y="-44.5" />
+      <point x="4074.0" y="2415.0" />
+      <point x="3540.0" y="2415.0" />
+      <point x="3540.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.Insert" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="-160.0" y="3075.0" />
+      <point x="-160.0" y="2615.0" />
+      <point x="230.0" y="2615.0" />
+      <point x="-90.0" y="-44.5" />
+    </edge>
+    <edge source="utility.Runner" target="managers.CommandManager" relationship="TO_ONE">
+      <point x="69.5" y="-68.5" />
+      <point x="4429.5" y="2635.0" />
+      <point x="4420.0" y="2635.0" />
+      <point x="4420.0" y="2575.0" />
+      <point x="4400.0" y="2575.0" />
+      <point x="4400.0" y="1695.0" />
+      <point x="3740.0" y="1695.0" />
+      <point x="0.0" y="-106.5" />
+    </edge>
+    <edge source="commands.Info" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="-64.75" y="-44.5" />
+      <point x="3135.25" y="2635.0" />
+      <point x="2160.0" y="2635.0" />
+      <point x="2160.0" y="2235.0" />
+      <point x="1700.0" y="2235.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="commands.PrintDescending" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="-84.0" y="-44.5" />
+      <point x="2876.0" y="2615.0" />
+      <point x="2120.0" y="2615.0" />
+      <point x="2120.0" y="2255.0" />
+      <point x="1700.0" y="2255.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="commands.Save" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="-66.5" y="-44.5" />
+      <point x="2433.5" y="2835.0" />
+      <point x="2040.0" y="2835.0" />
+      <point x="2040.0" y="2355.0" />
+      <point x="1700.0" y="2355.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="Main" target="managers.DumpManager" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="-200.0" y="3075.0" />
+      <point x="-200.0" y="2015.0" />
+      <point x="1260.0" y="2015.0" />
+      <point x="1260.0" y="1115.0" />
+      <point x="1385.75" y="1115.0" />
+      <point x="-94.25" y="-56.5" />
+    </edge>
+    <edge source="commands.RemoveLower" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1100.0" y="2635.0" />
+      <point x="1620.0" y="2635.0" />
+      <point x="1620.0" y="2375.0" />
+      <point x="1700.0" y="2375.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="models.Ticket" relationship="CREATE">
+      <point x="-56.75" y="-80.5" />
+      <point x="583.25" y="1695.0" />
+      <point x="340.0" y="1695.0" />
+      <point x="340.0" y="1475.0" />
+      <point x="600.0" y="1475.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="Main" target="commands.Help" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="4140.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="utility.console.Console" relationship="TO_ONE">
+      <point x="56.75" y="-80.5" />
+      <point x="696.75" y="1715.0" />
+      <point x="1140.0" y="1715.0" />
+      <point x="1140.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Update" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-93.33333333333334" y="-44.5" />
+      <point x="1726.6666666666667" y="2555.0" />
+      <point x="320.0" y="2555.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.ExecuteScript" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-49.5" y="-44.5" />
+      <point x="2410.5" y="1475.0" />
+      <point x="2420.0" y="1475.0" />
+      <point x="2420.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.CountGreaterThanDiscount" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1440.0" y="2655.0" />
+      <point x="1660.0" y="2655.0" />
+      <point x="1660.0" y="2475.0" />
+      <point x="1820.0" y="2475.0" />
+      <point x="1820.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="Main" target="commands.History" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="3820.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.Info" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-64.75" y="-44.5" />
+      <point x="3135.25" y="2635.0" />
+      <point x="2160.0" y="2635.0" />
+      <point x="2160.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.History" target="managers.CommandManager" relationship="TO_ONE">
+      <point x="70.0" y="-44.5" />
+      <point x="3890.0" y="2855.0" />
+      <point x="3900.0" y="2855.0" />
+      <point x="3900.0" y="2375.0" />
+      <point x="4400.0" y="2375.0" />
+      <point x="4400.0" y="1695.0" />
+      <point x="3740.0" y="1695.0" />
+      <point x="0.0" y="-106.5" />
+    </edge>
+    <edge source="commands.Update" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1820.0" y="2515.0" />
+      <point x="1860.0" y="2515.0" />
+      <point x="1860.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.CountGreaterThanDiscount" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-134.33333333333331" y="-44.5" />
+      <point x="1305.6666666666667" y="2575.0" />
+      <point x="320.0" y="2575.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="models.Ticket" target="models.TicketType" relationship="TO_ONE">
+      <point x="101.25" y="-238.5" />
+      <point x="701.25" y="935.0" />
+      <point x="700.0" y="935.0" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="models.forms.EventForm" relationship="CREATE">
+      <point x="-56.75" y="-80.5" />
+      <point x="583.25" y="1695.0" />
+      <point x="340.0" y="1695.0" />
+      <point x="340.0" y="1475.0" />
+      <point x="1100.0" y="1475.0" />
+      <point x="1100.0" y="795.0" />
+      <point x="903.25" y="795.0" />
+      <point x="-56.75" y="-56.5" />
+    </edge>
+    <edge source="utility.Runner.ExitCode" target="utility.Runner" relationship="INNER_CLASS">
+      <point x="0.0" y="-56.5" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="models.forms.CoordinatesForm" target="exceptions.InvalidFormException" relationship="CREATE">
+      <point x="-77.75" y="-56.5" />
+      <point x="82.25" y="1115.0" />
+      <point x="80.0" y="1115.0" />
+      <point x="80.0" y="1075.0" />
+      <point x="-40.0" y="1075.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="Main" target="commands.Exit" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2300.0" y="3075.0" />
+      <point x="2300.0" y="2515.0" />
+      <point x="2280.0" y="2515.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.ReplaceIfLower" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-110.33333333333337" y="-44.5" />
+      <point x="3349.6666666666665" y="2535.0" />
+      <point x="500.0" y="2535.0" />
+      <point x="500.0" y="2515.0" />
+      <point x="320.0" y="2515.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.Insert" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="320.0" y="2655.0" />
+      <point x="580.0" y="2655.0" />
+      <point x="580.0" y="2095.0" />
+      <point x="1700.0" y="2095.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="commands.ReplaceIfLower" target="commands.Command" relationship="GENERALIZATION">
+      <point x="110.33333333333334" y="-44.5" />
+      <point x="3570.3333333333335" y="2835.0" />
+      <point x="3580.0" y="2835.0" />
+      <point x="3580.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.ReplaceIfLower" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="3460.0" y="2595.0" />
+      <point x="2000.0" y="2595.0" />
+      <point x="2000.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Help" target="managers.CommandManager" relationship="TO_ONE">
+      <point x="66.0" y="-44.5" />
+      <point x="4206.0" y="2595.0" />
+      <point x="4520.0" y="2595.0" />
+      <point x="4520.0" y="2535.0" />
+      <point x="4400.0" y="2535.0" />
+      <point x="4400.0" y="1695.0" />
+      <point x="3740.0" y="1695.0" />
+      <point x="0.0" y="-106.5" />
+    </edge>
+    <edge source="commands.Show" target="commands.Command" relationship="GENERALIZATION">
+      <point x="67.5" y="-44.5" />
+      <point x="2787.5" y="2435.0" />
+      <point x="3180.0" y="2435.0" />
+      <point x="3180.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.Show" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-67.5" y="-44.5" />
+      <point x="2652.5" y="2655.0" />
+      <point x="2080.0" y="2655.0" />
+      <point x="2080.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Insert" target="models.forms.TicketForm" relationship="CREATE">
+      <point x="-90.0" y="-44.5" />
+      <point x="230.0" y="2655.0" />
+      <point x="240.0" y="2655.0" />
+      <point x="240.0" y="1955.0" />
+      <point x="500.0" y="1955.0" />
+      <point x="500.0" y="1715.0" />
+      <point x="583.25" y="1715.0" />
+      <point x="-56.75" y="-80.5" />
+    </edge>
+    <edge source="Main" target="commands.RemoveKey" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="-120.0" y="3075.0" />
+      <point x="-120.0" y="2855.0" />
+      <point x="-42.66666666666663" y="2855.0" />
+      <point x="-102.66666666666663" y="-44.5" />
+    </edge>
+    <edge source="commands.PrintDescending" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-84.0" y="-44.5" />
+      <point x="2876.0" y="2615.0" />
+      <point x="2120.0" y="2615.0" />
+      <point x="2120.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.History" target="commands.Command" relationship="GENERALIZATION">
+      <point x="-70.0" y="-44.5" />
+      <point x="3750.0" y="2475.0" />
+      <point x="3100.0" y="2475.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.History" target="utility.console.Console" relationship="TO_ONE">
+      <point x="70.0" y="-44.5" />
+      <point x="3890.0" y="2855.0" />
+      <point x="3900.0" y="2855.0" />
+      <point x="3900.0" y="2395.0" />
+      <point x="4440.0" y="2395.0" />
+      <point x="4440.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="models.forms.CoordinatesForm" target="utility.console.Console" relationship="TO_ONE">
+      <point x="77.75" y="-56.5" />
+      <point x="237.75" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="models.Event" target="utility.Validatable" relationship="REALIZATION">
+      <point x="-96.5" y="-118.5" />
+      <point x="963.5" y="195.0" />
+      <point x="560.0" y="195.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="Main" target="utility.Runner" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="4520.0" y="3075.0" />
+      <point x="4520.0" y="2615.0" />
+      <point x="4290.5" y="2615.0" />
+      <point x="-69.5" y="-68.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="exceptions.IncorrectInputInScriptException" relationship="CREATE">
+      <point x="-56.75" y="-80.5" />
+      <point x="583.25" y="1695.0" />
+      <point x="340.0" y="1695.0" />
+      <point x="340.0" y="695.0" />
+      <point x="180.0" y="695.0" />
+      <point x="180.0" y="655.0" />
+      <point x="380.0" y="655.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="commands.CountGreaterThanDiscount" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1440.0" y="2655.0" />
+      <point x="1660.0" y="2655.0" />
+      <point x="1660.0" y="2435.0" />
+      <point x="1700.0" y="2435.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="models.Ticket" target="models.Coordinates" relationship="TO_ONE">
+      <point x="101.25" y="-238.5" />
+      <point x="701.25" y="935.0" />
+      <point x="700.0" y="935.0" />
+      <point x="700.0" y="635.0" />
+      <point x="210.25" y="635.0" />
+      <point x="50.25" y="92.5" />
+    </edge>
+    <edge source="managers.CollectionManager" target="models.Ticket" relationship="TO_MANY">
+      <point x="0.0" y="-190.5" />
+      <point x="1440.0" y="1455.0" />
+      <point x="380.0" y="1455.0" />
+      <point x="380.0" y="915.0" />
+      <point x="701.25" y="915.0" />
+      <point x="101.25" y="-238.5" />
+    </edge>
+    <edge source="commands.FilterStartsWithName" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="720.0" y="2615.0" />
+      <point x="1580.0" y="2615.0" />
+      <point x="1580.0" y="2295.0" />
+      <point x="1700.0" y="2295.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="commands.Exit" target="commands.Command" relationship="GENERALIZATION">
+      <point x="48.5" y="-44.5" />
+      <point x="2328.5" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.Show" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2720.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.Insert" target="commands.Command" relationship="GENERALIZATION">
+      <point x="90.0" y="-44.5" />
+      <point x="410.0" y="2155.0" />
+      <point x="2580.0" y="2155.0" />
+      <point x="2580.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="models.forms.CoordinatesForm" target="models.Coordinates" relationship="CREATE">
+      <point x="-77.75" y="-56.5" />
+      <point x="82.25" y="1115.0" />
+      <point x="80.0" y="1115.0" />
+      <point x="80.0" y="615.0" />
+      <point x="109.75" y="615.0" />
+      <point x="-50.25" y="92.5" />
+    </edge>
+    <edge source="utility.Runner" target="utility.console.Console" relationship="TO_ONE">
+      <point x="69.5" y="-68.5" />
+      <point x="4429.5" y="2635.0" />
+      <point x="4420.0" y="2635.0" />
+      <point x="4420.0" y="2555.0" />
+      <point x="4480.0" y="2555.0" />
+      <point x="4480.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.CountGreaterThanDiscount" target="commands.Command" relationship="GENERALIZATION">
+      <point x="134.33333333333331" y="-44.5" />
+      <point x="1574.3333333333333" y="2275.0" />
+      <point x="3140.0" y="2275.0" />
+      <point x="3140.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.PrintDescending" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2960.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="managers.DumpManager" target="utility.ZonedDateTimeAdapter" relationship="CREATE">
+      <point x="-94.25" y="-56.5" />
+      <point x="1385.75" y="775.0" />
+      <point x="1020.0" y="775.0" />
+      <point x="1020.0" y="735.0" />
+      <point x="1700.0" y="735.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="commands.Clear" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="-67.0" y="-44.5" />
+      <point x="2073.0" y="2855.0" />
+      <point x="1960.0" y="2855.0" />
+      <point x="1960.0" y="2455.0" />
+      <point x="1700.0" y="2455.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="utility.Runner" target="exceptions.ScriptRecursionException" relationship="CREATE">
+      <point x="-69.5" y="-68.5" />
+      <point x="4290.5" y="2455.0" />
+      <point x="2860.0" y="2455.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="managers.DumpManager" target="utility.console.Console" relationship="TO_ONE">
+      <point x="94.25" y="-56.5" />
+      <point x="1574.25" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Help" target="utility.console.Console" relationship="TO_ONE">
+      <point x="66.0" y="-44.5" />
+      <point x="4206.0" y="2595.0" />
+      <point x="4520.0" y="2595.0" />
+      <point x="4520.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="managers.CommandManager" target="commands.Command" relationship="TO_MANY">
+      <point x="0.0" y="-106.5" />
+      <point x="3740.0" y="1315.0" />
+      <point x="3211.25" y="1315.0" />
+      <point x="51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.ExecuteScript" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2340.0" y="3075.0" />
+      <point x="2340.0" y="2515.0" />
+      <point x="2460.0" y="2515.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.FilterStartsWithName" target="commands.Command" relationship="GENERALIZATION">
+      <point x="122.33333333333334" y="-44.5" />
+      <point x="842.3333333333333" y="2175.0" />
+      <point x="2620.0" y="2175.0" />
+      <point x="2620.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.Clear" target="commands.Command" relationship="GENERALIZATION">
+      <point x="67.0" y="-44.5" />
+      <point x="2207.0" y="2395.0" />
+      <point x="2700.0" y="2395.0" />
+      <point x="2700.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.Update" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="1980.0" y="3075.0" />
+      <point x="1980.0" y="2835.0" />
+      <point x="1726.6666666666667" y="2835.0" />
+      <point x="-93.33333333333334" y="-44.5" />
+    </edge>
+    <edge source="Main" target="managers.CollectionManager" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="480.0" y="3075.0" />
+      <point x="480.0" y="2055.0" />
+      <point x="1440.0" y="2055.0" />
+      <point x="0.0" y="190.5" />
+    </edge>
+    <edge source="commands.RemoveKey" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="60.0" y="2635.0" />
+      <point x="620.0" y="2635.0" />
+      <point x="620.0" y="2135.0" />
+      <point x="1700.0" y="2135.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="models.Ticket" target="utility.Element" relationship="GENERALIZATION">
+      <point x="-101.25" y="-238.5" />
+      <point x="498.75" y="715.0" />
+      <point x="560.0" y="715.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.ReplaceIfLower" target="models.forms.TicketForm" relationship="CREATE">
+      <point x="-110.33333333333337" y="-44.5" />
+      <point x="3349.6666666666665" y="2535.0" />
+      <point x="500.0" y="2535.0" />
+      <point x="500.0" y="1715.0" />
+      <point x="583.25" y="1715.0" />
+      <point x="-56.75" y="-80.5" />
+    </edge>
+    <edge source="commands.Insert" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="320.0" y="2655.0" />
+      <point x="580.0" y="2655.0" />
+      <point x="580.0" y="2075.0" />
+      <point x="1180.0" y="2075.0" />
+      <point x="1180.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="Main" target="utility.console.StandardConsole" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="4660.0" y="3075.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="commands.Exit" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-48.5" y="-44.5" />
+      <point x="2231.5" y="1755.0" />
+      <point x="2240.0" y="1755.0" />
+      <point x="2240.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Show" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="-67.5" y="-44.5" />
+      <point x="2652.5" y="2655.0" />
+      <point x="2080.0" y="2655.0" />
+      <point x="2080.0" y="2315.0" />
+      <point x="1700.0" y="2315.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="models.forms.EventForm" target="utility.console.Console" relationship="TO_ONE">
+      <point x="56.75" y="-56.5" />
+      <point x="1016.75" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.RemoveKey" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-102.66666666666663" y="-44.5" />
+      <point x="-42.66666666666663" y="2575.0" />
+      <point x="320.0" y="2575.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="Main" target="commands.Clear" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2140.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="commands.ReplaceIfLower" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="3460.0" y="2595.0" />
+      <point x="2000.0" y="2595.0" />
+      <point x="2000.0" y="2415.0" />
+      <point x="1700.0" y="2415.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="Main" target="commands.FilterStartsWithName" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="520.0" y="3075.0" />
+      <point x="520.0" y="2855.0" />
+      <point x="597.6666666666666" y="2855.0" />
+      <point x="-122.33333333333337" y="-44.5" />
+    </edge>
+    <edge source="Main" target="commands.ReplaceIfLower" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="3660.0" y="3075.0" />
+      <point x="3660.0" y="2855.0" />
+      <point x="3349.6666666666665" y="2855.0" />
+      <point x="-110.33333333333337" y="-44.5" />
+    </edge>
+    <edge source="managers.CollectionManager" target="managers.DumpManager" relationship="TO_ONE">
+      <point x="0.0" y="-190.5" />
+      <point x="1440.0" y="1455.0" />
+      <point x="1700.0" y="1455.0" />
+      <point x="1700.0" y="1115.0" />
+      <point x="1574.25" y="1115.0" />
+      <point x="94.25" y="-56.5" />
+    </edge>
+    <edge source="commands.Insert" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-90.0" y="-44.5" />
+      <point x="230.0" y="2655.0" />
+      <point x="240.0" y="2655.0" />
+      <point x="240.0" y="1935.0" />
+      <point x="320.0" y="1935.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.PrintDescending" target="commands.Command" relationship="GENERALIZATION">
+      <point x="84.0" y="-44.5" />
+      <point x="3044.0" y="2495.0" />
+      <point x="3300.0" y="2495.0" />
+      <point x="3300.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="models.Ticket" target="models.Event" relationship="TO_ONE">
+      <point x="101.25" y="-238.5" />
+      <point x="701.25" y="935.0" />
+      <point x="700.0" y="935.0" />
+      <point x="700.0" y="635.0" />
+      <point x="840.0" y="635.0" />
+      <point x="840.0" y="175.0" />
+      <point x="1156.5" y="175.0" />
+      <point x="96.5" y="-118.5" />
+    </edge>
+    <edge source="Main" target="commands.Info" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="3200.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="utility.Element" target="utility.Validatable" relationship="REALIZATION">
+      <point x="0.0" y="-44.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.RemoveKey" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="60.0" y="2635.0" />
+      <point x="620.0" y="2635.0" />
+      <point x="620.0" y="2115.0" />
+      <point x="1220.0" y="2115.0" />
+      <point x="1220.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.RemoveLower" target="commands.Command" relationship="GENERALIZATION">
+      <point x="107.66666666666666" y="-44.5" />
+      <point x="1207.6666666666667" y="2215.0" />
+      <point x="3020.0" y="2215.0" />
+      <point x="3020.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.CountGreaterThanDiscount" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="1660.0" y="3075.0" />
+      <point x="1660.0" y="2595.0" />
+      <point x="1305.6666666666667" y="2595.0" />
+      <point x="-134.33333333333331" y="-44.5" />
+    </edge>
+    <edge source="commands.Update" target="managers.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1820.0" y="2495.0" />
+      <point x="1700.0" y="2495.0" />
+      <point x="1700.0" y="1615.0" />
+      <point x="1440.0" y="1615.0" />
+      <point x="0.0" y="-190.5" />
+    </edge>
+    <edge source="models.Event" target="models.EventType" relationship="TO_ONE">
+      <point x="96.5" y="-118.5" />
+      <point x="1156.5" y="155.0" />
+      <point x="1160.0" y="155.0" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="commands.Save" target="commands.Command" relationship="GENERALIZATION">
+      <point x="66.5" y="-44.5" />
+      <point x="2566.5" y="2415.0" />
+      <point x="3220.0" y="2415.0" />
+      <point x="3220.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.Save" target="utility.console.Console" relationship="TO_ONE">
+      <point x="-66.5" y="-44.5" />
+      <point x="2433.5" y="2835.0" />
+      <point x="2040.0" y="2835.0" />
+      <point x="2040.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="commands.Update" target="models.forms.TicketForm" relationship="CREATE">
+      <point x="-93.33333333333334" y="-44.5" />
+      <point x="1726.6666666666667" y="2555.0" />
+      <point x="320.0" y="2555.0" />
+      <point x="320.0" y="2035.0" />
+      <point x="500.0" y="2035.0" />
+      <point x="500.0" y="1715.0" />
+      <point x="583.25" y="1715.0" />
+      <point x="-56.75" y="-80.5" />
+    </edge>
+    <edge source="utility.console.StandardConsole" target="utility.console.Console" relationship="REALIZATION">
+      <point x="0.0" y="-105.5" />
+      <point x="4660.0" y="2795.0" />
+      <point x="4560.0" y="2795.0" />
+      <point x="4560.0" y="735.0" />
+      <point x="2100.25" y="735.0" />
+      <point x="60.25" y="92.5" />
+    </edge>
+    <edge source="models.forms.TicketForm" target="exceptions.InvalidFormException" relationship="CREATE">
+      <point x="-56.75" y="-80.5" />
+      <point x="583.25" y="1695.0" />
+      <point x="340.0" y="1695.0" />
+      <point x="340.0" y="1475.0" />
+      <point x="-60.0" y="1475.0" />
+      <point x="-60.0" y="1175.0" />
+      <point x="-40.0" y="1175.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.RemoveLower" target="models.forms.TicketForm" relationship="CREATE">
+      <point x="-107.66666666666663" y="-44.5" />
+      <point x="992.3333333333335" y="2595.0" />
+      <point x="280.0" y="2595.0" />
+      <point x="280.0" y="1995.0" />
+      <point x="500.0" y="1995.0" />
+      <point x="500.0" y="1715.0" />
+      <point x="583.25" y="1715.0" />
+      <point x="-56.75" y="-80.5" />
+    </edge>
+    <edge source="managers.DumpManager" target="utility.LocalDateAdapter" relationship="CREATE">
+      <point x="-94.25" y="-56.5" />
+      <point x="1385.75" y="775.0" />
+      <point x="1020.0" y="775.0" />
+      <point x="1020.0" y="735.0" />
+      <point x="1420.0" y="735.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="Main" target="commands.Save" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="2500.0" y="3075.0" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="Main" target="managers.CommandManager" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="3980.0" y="3075.0" />
+      <point x="3980.0" y="2435.0" />
+      <point x="3740.0" y="2435.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="commands.Update" target="commands.Command" relationship="GENERALIZATION">
+      <point x="93.33333333333334" y="-44.5" />
+      <point x="1913.3333333333335" y="2375.0" />
+      <point x="3060.0" y="2375.0" />
+      <point x="3060.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="commands.ExecuteScript" target="commands.Command" relationship="GENERALIZATION">
+      <point x="49.5" y="-44.5" />
+      <point x="2509.5" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="models.forms.EventForm" target="exceptions.IncorrectInputInScriptException" relationship="CREATE">
+      <point x="-56.75" y="-56.5" />
+      <point x="903.25" y="735.0" />
+      <point x="180.0" y="735.0" />
+      <point x="180.0" y="655.0" />
+      <point x="380.0" y="655.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="commands.RemoveLower" target="exceptions.WrongAmountOfElementsException" relationship="CREATE">
+      <point x="-107.66666666666663" y="-44.5" />
+      <point x="992.3333333333335" y="2595.0" />
+      <point x="280.0" y="2595.0" />
+      <point x="280.0" y="1975.0" />
+      <point x="320.0" y="1975.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="models.Coordinates" target="utility.Validatable" relationship="REALIZATION">
+      <point x="0.0" y="-92.5" />
+      <point x="160.0" y="195.0" />
+      <point x="560.0" y="195.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="commands.RemoveLower" target="utility.console.Console" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="1100.0" y="2635.0" />
+      <point x="1620.0" y="2635.0" />
+      <point x="1620.0" y="2395.0" />
+      <point x="1780.0" y="2395.0" />
+      <point x="1780.0" y="755.0" />
+      <point x="1960.0" y="755.0" />
+      <point x="1960.0" y="635.0" />
+      <point x="1979.75" y="635.0" />
+      <point x="-60.25" y="92.5" />
+    </edge>
+    <edge source="models.forms.CoordinatesForm" target="exceptions.IncorrectInputInScriptException" relationship="CREATE">
+      <point x="-77.75" y="-56.5" />
+      <point x="82.25" y="1115.0" />
+      <point x="80.0" y="1115.0" />
+      <point x="80.0" y="675.0" />
+      <point x="180.0" y="675.0" />
+      <point x="180.0" y="655.0" />
+      <point x="380.0" y="655.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="commands.RemoveKey" target="commands.Command" relationship="GENERALIZATION">
+      <point x="102.66666666666666" y="-44.5" />
+      <point x="162.66666666666663" y="2195.0" />
+      <point x="2660.0" y="2195.0" />
+      <point x="2660.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+    <edge source="Main" target="commands.RemoveLower" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-80.0" y="3075.0" />
+      <point x="920.0" y="3075.0" />
+      <point x="920.0" y="2855.0" />
+      <point x="992.3333333333335" y="2855.0" />
+      <point x="-107.66666666666663" y="-44.5" />
+    </edge>
+    <edge source="commands.Info" target="commands.Command" relationship="GENERALIZATION">
+      <point x="64.75" y="-44.5" />
+      <point x="3264.75" y="2515.0" />
+      <point x="3260.0" y="2515.0" />
+      <point x="3260.0" y="1495.0" />
+      <point x="3100.0" y="1495.0" />
+      <point x="3100.0" y="1315.0" />
+      <point x="3108.75" y="1315.0" />
+      <point x="-51.25" y="94.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.2592810842663524" showDependencies="true" x="2285.0" y="1673.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
