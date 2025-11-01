@@ -1,0 +1,9 @@
+originaltask1.py (Built-in Libraries)
+
+Simplest implementation using Python's standard libraries
+Uses:
+json.loads(): Python's built-in JSON parser
+yaml.dump(): PyYAML library for YAML conversion
+No custom parsing logic, relies entirely on optimized library implementations
+Parameters like allow_unicode=True ensure proper handling of non-ASCII characters
+

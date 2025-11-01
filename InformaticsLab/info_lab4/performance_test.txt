@@ -1,0 +1,53 @@
+_ karakterini, değer kullanmazsak for döngüsünde kullanabiliriz
+
+This script will:
+
+Run each implementation 100 times
+Measure the average execution time
+Compare relative performance between implementations
+Display results in a formatted table
+Analysis of the implementations:
+
+Task 0 (Manual Parser):
+
+Pure Python implementation
+No regex or external libraries
+Character-by-character parsing
+Simple but potentially slower for complex operations
+Task 1 (Built-in Libraries):
+
+Uses Python's native json module
+Uses PyYAML for YAML conversion
+Highly optimized C implementation
+Expected to be the fastest
+Task 2 (Regex Parser):
+
+Uses regular expressions for pattern matching
+More sophisticated string parsing
+Potentially faster than manual parsing for complex patterns
+May have regex compilation overhead
+Task 3 (Grammar Parser):
+
+Uses Lark parser with formal grammar
+Most sophisticated implementation
+Has parser generation overhead
+Better for complex parsing scenarios
+Expected performance order (fastest to slowest):
+
+Task 1 (Built-in) - Native implementation
+Task 2 (Regex) - Optimized string parsing
+Task 0 (Manual) - Simple but unoptimized
+Task 3 (Grammar) - Overhead from parser generation
+The actual results will be displayed after running the script, 
+showing precise timing differences between implementations
+
+Output:
+Performance Test Results (100 iterations):
+--------------------------------------------------
+Parser Type          Average Time (ms) Relative Speed
+--------------------------------------------------
+Task 0 (Manual)              0.155ms           1.00x
+Task 1 (Built-in)            1.322ms           8.51x
+Task 2 (Regex)               0.331ms           2.13x
+Task 3 (Grammar)             9.926ms          63.91x
+

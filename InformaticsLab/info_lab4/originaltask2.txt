@@ -1,0 +1,8 @@
+originaltask2.py (Regex Parser)
+Enhanced version of Task 0 using regular expressions
+Key improvements:
+parse_string(): Uses regex pattern ^"((?:[^"\\]|\\.)*)" to match JSON strings
+parse_number(): Uses regex pattern ^-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)? for numbers
+parse_value(): Uses regex patterns for true/false/null values
+Maintains same overall structure but with more robust pattern matching
+Should be more efficient than Task 0 for complex string and number parsing

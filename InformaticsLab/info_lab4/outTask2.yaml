@@ -1,0 +1,54 @@
+even_week: True
+group_name: P3132
+days:
+  Wednesday:
+    date: Wednesday
+    schedule:
+      - 
+        id: 230
+        title: Информатика
+        class_format: Очно
+        type: Лекция
+        campus: ул.Ломоносова, д.9, лит. М
+        time: 08:20-09:50
+        auditory: Актовый зал (1216/0 (усл))
+        teacher: Балакшин Павел Валерьевич
+      - 
+        id: 231
+        title: Основы профессиональной деятельности
+        class_format: Очно
+        type: Лекция
+        campus: ул.Ломоносова, д.9, лит. М
+        time: 10:00-11:30
+        auditory: Актовый зал (1216/0 (усл))
+        teacher: Клименков Сергей Викторович
+      - 
+        id: 232
+        title: Основы профессиональной деятельности
+        class_format: Очно
+        type: Лабораторная
+        campus: Кронверкский пр., д.49, лит.А
+        time: 13:30-15:20
+        auditory: Ауд. 2112
+        teacher: Ермаков Михаил Константинович
+  Friday:
+    date: Friday
+    schedule:
+      - 
+        id: 233
+        title: русский-язык
+        class_format: Очно
+        type: Лекция
+        campus: ул.Ломоносова, д.9, лит. М
+        time: 08:20-11:30
+        auditory: Ауд. 3222
+        teacher: Оксана Колегова
+      - 
+        id: 234
+        title: Основы дискретной математики (базовый уровень)
+        class_format: Очно
+        type: Лекция
+        campus: Кронверкский пр., д.49, лит.А
+        time: 17:00-18:40
+        auditory: Ауд. 1428
+        teacher: Поляков Владимир Иванович

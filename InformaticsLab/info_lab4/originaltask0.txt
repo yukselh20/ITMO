@@ -1,0 +1,17 @@
+originaltask0.py (Manual Parser)
+This is a basic, hand-written JSON parser that uses no external libraries
+
+Key components:
+loads(): Main entry point that determines if input starts with '{' or '['
+
+parse_object(): Parses JSON objects (dictionaries) character by character
+
+parse_array(): Parses JSON arrays (lists) character by character
+
+parse_string(): Extracts string values between quotes
+
+parse_number(): Converts numeric strings to int/float
+
+parse_value(): Handles all JSON value types (objects, arrays, strings, numbers, booleans, null)
+
+json_to_yaml(): Custom converter that formats Python data structures into YAML syntax

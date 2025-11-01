@@ -1,0 +1,8 @@
+originaltask3.py (Grammar Parser)
+Most sophisticated implementation using formal grammar with Lark parser
+Components:
+JSON_GRAMMAR: Formal EBNF grammar definition for JSON
+JsonTransformer: Converts parse tree into Python data structures
+Advanced error handling and proper parsing of nested structures
+Uses Lark library for parsing based on formal grammar rules
+Most maintainable and theoretically sound approach
