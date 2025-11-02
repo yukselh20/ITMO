@@ -1,33 +1,32 @@
-# Лабораторная работа #1
+# Lab Assignment #1
 
-Написать программу на языке Java, выполняющую указанные в варианте действия.
+Write a program in Java that performs the actions specified in the assignment variant.
 
-## Требования к программе:
+## Program Requirements:
 
-*   Программа должна корректно запускаться, выполняться и выдавать результат. Программа не должна выдавать ошибки. Программа должна быть работоспособной именно во время проверки, то, что она работала 5 минут назад, дома или в параллельной вселенной оправданием не является.
-*   Выражение должно вычисляться в соответствии с правилами вычисления математических выражений (должен соблюдаться порядок выполнения действий и т.д.).
-*   Программа должна использовать математические функции из стандартной библиотеки Java.
-*   Вычисление очередного элемента двумерного массива должно быть реализовано в виде отдельного статического метода.
-*   Результат вычисления выражения должен быть выведен в стандартный поток вывода в виде матрицы с элементами в указанном в варианте формате. Вывод матрицы реализовать в виде отдельного статического метода.
-*   Программа должна быть упакована в исполняемый jar-архив.
-*   Выполнение программы необходимо продемонстрировать на сервере helios.
+*   The program must start, execute, and produce a result correctly. It should not generate any errors. The program must be fully functional at the time of review; excuses like "it was working 5 minutes ago, at home, or in a parallel universe" are not acceptable.
+*   The expression must be calculated according to the rules of mathematical expressions (observing the order of operations, etc.).
+*   The program must use mathematical functions from the standard Java library.
+*   The calculation of each element of the two-dimensional array must be implemented as a separate static method.
+*   The result of the expression calculation must be printed to the standard output stream as a matrix with elements in the format specified in the variant. The matrix output must be implemented as a separate static method.
+*   The program must be packaged into an executable JAR archive.
+*   The program's execution must be demonstrated on the `helios` server.
 
----
 
-## Вариант задания: 75922
+## Assignment Variant: 75922
 
-1.  Создать одномерный массив `e` типа int. Заполнить его числами от 5 до 17 включительно в порядке убывания.
+1.  Create a one-dimensional array `e` of type `int`. Fill it with numbers from 17 down to 5, inclusive.
 
-2.  Создать одномерный массив `x` типа float. Заполнить его 19-ю случайными числами в диапазоне от -6.0 до 15.0.
+2.  Create a one-dimensional array `x` of type `float`. Fill it with 19 random numbers in the range from -6.0 to 15.0.
 
-3.  Создать двумерный массив `r` размером 13x19. Вычислить его элементы по следующей формуле (где `x = x[j]`):
-    *   если `e[i] == 16`, то `r[i][j] = (tan(e^x))^(1/3)`
-    *   если `e[i]` ∈ {8, 9, 10, 12, 14, 17}, то `r[i][j] = cos( ( ((x + 1) / x)^(1/3) )^3 )`
-    *   для остальных значений `e[i]`: `r[i][j] = arctan( ( e ^ ( ((пи/2 - |x|)^x)^(1/3) ) )^2 )`
+3.  Create a two-dimensional array `r` with dimensions 13x19. Calculate its elements according to the following formula (where `x = x[j]`):
+    *   If `e[i] == 16`, then `r[i][j] = (tan(e^x))^(1/3)`
+    *   If `e[i]` is one of `{8, 9, 10, 12, 14, 17}`, then `r[i][j] = cos( ( ((x + 1) / x)^(1/3) )^3 )`
+    *   For all other values of `e[i]`: `r[i][j] = arctan( ( e ^ ( ((pi/2 - |x|)^x)^(1/3) ) )^2 )`
 
-4.  Напечатать полученный в результате массив в формате с тремя знаками после запятой.
+4.  Print the resulting array in a format with three decimal places.
 
-### Примечания:
+### Notes:
 
-1.  В случае, если в варианте будут предложены одинаковые имена массивов, для одного из них к имени добавить "1".
-2.  Если в результате вычислений иногда получается NaN - возможно так и должно быть.
+1.  If the variant suggests identical array names, add "1" to the name of one of them.
+2.  If the calculations sometimes result in `NaN` (Not a Number), this might be the intended behavior.
