@@ -1,0 +1,159 @@
+; ============================================================
+; Interrupt Vector Table
+; ============================================================
+            ORG     0x000
+V0:         WORD    DEFAULT_INT_HANDLER, 0x0180 ; PS = 0001 1000 0000 (Work, Prog, INT disabled)
+V1:         WORD    INT1_HANDLER, 0x0180        ; For VU-1
+V2:         WORD    DEFAULT_INT_HANDLER, 0x0180
+V3:         WORD    INT3_HANDLER, 0x0180        ; For VU-3
+V4:         WORD    DEFAULT_INT_HANDLER, 0x0180
+V5:         WORD    DEFAULT_INT_HANDLER, 0x0180
+V6:         WORD    DEFAULT_INT_HANDLER, 0x0180
+V7:         WORD    DEFAULT_INT_HANDLER, 0x0180
+
+; ============================================================
+; Constants and Variables
+; ============================================================
+            ORG     0x030       ; Start data/code after vectors (leaving some space)
+MIN_ODZ_X:  WORD    -30         ; -30 decimal
+MAX_ODZ_X:  WORD    33          ;  33 decimal (This is the value to write if X goes out of bounds)
+CONST_2:    WORD    2
+CONST_8:    WORD    8
+
+            ORG     0x033       ; As per your variant
+X:          WORD    0           ; Initial value of X (e.g., 0 for testing)
+
+; MR Addresses ( symbolic constants for readability - assembler doesn't directly support this,
+; but we'll use the actual numbers in OUT instructions)
+; MR_VU0_ADDR EQU 0x1 ; Timer Status/Data
+; MR_VU1_ADDR EQU 0x3 ; VU-1 Management Register
+; MR_VU2_ADDR EQU 0x5 ; VU-2 Management Register
+; MR_VU3_ADDR EQU 0x7 ; VU-3 Management Register
+; ... etc. for other VUs if we were to clear their MRs specifically
+
+; DR Addresses
+; DR_VU1_ADDR EQU 0x2 ; VU-1 Data Register
+; DR_VU3_ADDR EQU 0x6 ; VU-3 Data Register
+
+
+; ============================================================
+; Main Program Start
+; ============================================================
+            ORG     0x050       ; Arbitrary start address for the main program logic
+START:
+            DI                  ; Disable interrupts during setup
+
+            ; Disable interrupts for unused VUs by writing 0 to their MR
+            CLA                 ; Clear Accumulator (to get 0)
+            OUT     0x1         ; MR for VU-0 (Timer)
+            OUT     0x5         ; MR for VU-2
+            OUT     0xB         ; MR for VU-4
+            OUT     0xE         ; MR for VU-5
+                                ; Let's assume VU-5 is 0xD, VU-6 is 0xF etc. based on pattern.
+                                ; We need to ensure we cover all MRs for VUs we are NOT using.
+                                ; For now, just an example, will need to list all relevant MRs to clear.
+                                ; Example: If VU-4 MR is at 0x09, VU-5 at 0x0B, VU-6 at 0x0D, VU-7 at 0x0F, 
+                                ; VU-8 at 0x11, VU-9 at 0x13 (this is hypothetical, consult docs)
+            OUT     0x12        ; MR VU-6
+            OUT     0x16        ; MR VU-7
+            OUT     0x1A        ; MR VU-8
+            OUT     0x1E        ; MR VU-9
+
+            ; Configure MR for VU-1 (Interrupt Vector 1)
+            LD      #0x9        ; 0x9 = 1001_binary (Enable interrupt FOR Vector #1)
+            OUT     0x3         ; Write to MR of VU-1
+
+            ; Configure MR for VU-3 (Interrupt Vector 3)
+            LD      #0xB        ; 0xB = 1011_binary (Enable interrupt FOR Vector #3)
+            OUT     0x7         ; Write to MR of VU-3
+
+            EI                  ; Enable interrupts now that setup is done
+
+MAIN_LOOP:
+            DI                  ; --- Start of ATOMIC operation for X = X - 2 ---
+            LD      X           ; Load current X
+            SUB     CONST_2     ; AC = X - 2
+            CALL    CHECK_X_ODZ ; Check if AC is within ODZ, correct if not
+            ST      X           ; Store modified (and possibly corrected) X
+            EI                  ; --- End of ATOMIC operation ---
+            JUMP    MAIN_LOOP
+
+; ============================================================
+; ODZ Check Subroutine
+; Input: Value in AC. Output: AC corrected to MAX_ODZ_X if out of bounds.
+; Modifies: Flags. Does NOT preserve AC if correction happens.
+; ============================================================
+CHECK_X_ODZ:
+            CMP     MIN_ODZ_X   ; AC - MIN_ODZ_X. If AC < MIN_ODZ_X, N=1, Z=0
+            BMI     LOAD_MAX_X_ODZ ; If negative (AC < MIN_ODZ_X), X is out of bounds (too small)
+
+            CMP     MAX_ODZ_X   ; AC - MAX_ODZ_X. If AC > MAX_ODZ_X, N=0, Z=0, V might be set
+            BPL     ODZ_OKAY    ; If positive (AC > MAX_ODZ_X) or zero (AC == MAX_ODZ_X), check further
+                                ; BPL (Branch if PLus) branches if N=0. So if AC > MAX_ODZ_X or AC == MAX_ODZ_X
+            BEQ     ODZ_OKAY    ; If AC == MAX_ODZ_X, it's okay. (Redundant if BPL catches it, but safe)
+                                ; Actually, if AC > MAX_ODZ_X, we need to load MAX.
+                                ; So, if N=0 after CMP MAX_ODZ_X, it means AC >= MAX_ODZ_X.
+                                ; If AC == MAX_ODZ_X, Z=1. If AC > MAX_ODZ_X, Z=0.
+
+CORRECT_MAX:CMP     MAX_ODZ_X   ; Re-compare to be sure about flags for BPL/BMI
+            BPL     LOAD_MAX_X_ODZ_IF_GREATER ; If AC >= MAX_ODZ_X (N=0)
+            JUMP    ODZ_OKAY    ; If AC < MAX_ODZ_X (and we know AC >= MIN_ODZ_X from above)
+LOAD_MAX_X_ODZ_IF_GREATER:
+            CMP     MAX_ODZ_X
+            BEQ     ODZ_OKAY    ; if AC == MAX_ODZ_X, it's fine
+            ; If we are here, AC > MAX_ODZ_X (N=0, Z=0 from CMP MAX_ODZ_X)
+LOAD_MAX_X_ODZ:
+            LD      MAX_ODZ_X   ; Load MAX_ODZ_X into AC
+ODZ_OKAY:
+            RET
+
+; ============================================================
+; Interrupt Handler for VU-1 (Vector 1)
+; F(X) = 4X - 8, output to VU-1 (DR #2)
+; ============================================================
+INT1_HANDLER:
+            DI
+            PUSH    AC          ; Save AC
+            LD      X           ; Get current X
+            ASL                 ; AC = 2X
+            ASL                 ; AC = 4X
+            SUB     CONST_8     ; AC = 4X - 8
+            ; Result should be 8-bit signed. We need to clip it.
+            ; The ODZ for X [-30, 33] ensures 4X-8 is within [-128, 124], which fits.
+            ; No explicit clipping needed here if X is always within its ODZ.
+            OUT     0x2         ; Output to VU-1 Data Register (DR #2)
+            POP     AC          ; Restore AC
+            ; EI ; Not strictly necessary here as IRET restores old PS which might have EI=1
+            IRET
+
+; ============================================================
+; Interrupt Handler for VU-3 (Vector 3)
+; Read 8-bit signed from RDVU-3 (DR #6), sign-extend, store in X (after ODZ)
+; ============================================================
+INT3_HANDLER:
+            DI
+            PUSH    AC          ; Save AC
+            IN      0x6         ; Read from VU-3 Data Register (DR #6) into AC (lower 8 bits)
+            SXTB                ; Sign-extend AC from 8-bit to 16-bit
+            CALL    CHECK_X_ODZ ; Check if this new value is within ODZ for X
+            ST      X           ; Store new (and possibly corrected) value into X
+            POP     AC          ; Restore AC
+            ; EI
+            IRET
+
+; ============================================================
+; Default Interrupt Handler (for unused vectors)
+; Per the note, it should clear ready status of ALL VUs.
+; However, if we disable unused VUs via MRs in START, this can be simpler.
+; For now, a simple IRET, assuming MRs for unused VUs are 0.
+; ============================================================
+DEFAULT_INT_HANDLER:
+            ; To properly implement "СБРОСИТЬ ГОТОВНОСТЬ ВСЕХ ВУ":
+            ; We would need to:
+            ; PUSH AC
+            ; For each VU (VU0, VU2, VU4, VU5, VU6, VU7, VU8, VU9):
+            ;   IN DR_VU_i  ; Dummy read from Data Register to clear ready flag
+            ; POP AC
+            IRET                ; For now, simple return.
+
+            END                 ; End of assembly program (optional, depends on assembler)

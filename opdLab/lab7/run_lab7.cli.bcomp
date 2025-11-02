@@ -1,0 +1,163 @@
+# =============================================================
+# BЭВМ-NG Simulator Script for Lab Work #7
+# Command: SUBSP (Opcode 0F03)
+# =============================================================
+
+# --- Section 1: Load the Microprogram for SUBSP ---
+# This section modifies the CPU's Control Unit memory.
+# It starts by setting the micro-address to E0.
+
+ma E0
+
+# Write the microcode for SUBSP line by line.
+mw 81C4FC1002
+mw 80C4021002
+mw 80C4011002
+mw 0080009008
+mw 0100000000
+mw 0020009001
+mw 0080009408
+mw 0100000000
+mw 0001E09621
+mw 0088009208
+mw 0200000000
+mw 80C4101040
+
+# --- Section 2: Load the Assembly Test Program ---
+# Switch to assembler mode.
+asm
+
+# The assembly program starts here.
+# It must start with ORG and end with END.
+ORG   0x03F0      ; Начальный адрес программы
+
+; --- Область для результатов тестов ---
+RESULT:   WORD  0           ; Финальный результат (1 = все тесты прошли)
+CHECK1:   WORD  0           ; Результат Теста 1 (простое вычитание)
+CHECK2:   WORD  0           ; Результат Теста 2 (отрицательный результат, флаг N)
+CHECK3:   WORD  0           ; Результат Теста 3 (переполнение, флаг V)
+CHECK4:   WORD  0           ; Результат Теста 4 (заём, флаг C)
+
+; --- Хранилища для результатов операций ---
+RES1:     WORD  0
+RES2:     WORD  0
+RES3:     WORD  0
+RES4:     WORD  0
+
+; --- Аргументы для тестов ---
+ARG1:     WORD  0x1010
+ARG2:     WORD  0x0010    ; Для TEST1: 0x1010 - 0x0010 = 0x1000
+
+ARG3:     WORD  0x0000
+ARG4:     WORD  0x0004    ; Для TEST2: 0x0000 - 0x0004 = -4 (FFFC)
+
+ARG5:     WORD  0x7FFF
+ARG6:     WORD  0x8000    ; Для TEST3: 0x7FFF - 0x8000 = FFFF, Overflow
+
+ARG7:     WORD  0x0000
+ARG8:     WORD  0x0001    ; Для TEST4: 0x0000 - 0x0001 = -1 (FFFF), Carry
+
+; --- Основная программа ---
+START:    CLA             ; Очистить аккумулятор
+          CALL  TEST1
+          CALL  TEST2
+          CALL  TEST3
+          CALL  TEST4
+
+          LD    #0x1        ; Загрузить 1 для финальной проверки
+          AND   CHECK1      ; Если CHECK1=0, результат будет 0
+          AND   CHECK2
+          AND   CHECK3
+          AND   CHECK4
+          ST    RESULT      ; Сохранить финальный результат
+
+STOP:     HLT
+
+; --- TEST 1: Простое вычитание ---
+TEST1:    LD    ARG1
+          PUSH
+          LD    ARG2
+          PUSH
+          WORD  0x0F03      ; Выполняем SUBSP
+          POP
+          ST    RES1
+          CMP   #0x1000     ; Сравниваем с ожидаемым результатом
+          BEQ   CORR1       ; Если равно, тест пройден
+          POP               ; Очистка стека в случае ошибки
+          POP
+          CLA
+          RET
+CORR1:    POP
+          POP
+          LD    #0x1        ; Тест пройден, установить флаг успеха
+          ST    CHECK1
+          CLA
+          RET
+
+; --- TEST 2: Отрицательный результат (Флаг N) ---
+TEST2:    LD    ARG3
+          PUSH
+          LD    ARG4
+          PUSH
+          WORD  0x0F03      ; Выполняем SUBSP
+          BMI   CORR2       ; Если результат отрицательный (N=1), тест пройден
+          POP
+          POP
+          CLA
+          RET
+CORR2:    POP
+          POP
+          LD    #0x1
+          ST    CHECK2
+          CLA
+          RET
+
+; --- TEST 3: Переполнение (Флаг V) ---
+TEST3:    LD    ARG5
+          PUSH
+          LD    ARG6
+          PUSH
+          WORD  0x0F03      ; Выполняем SUBSP
+          BVS   CORR3       ; Если произошло переполнение (V=1), тест пройден
+          POP
+          POP
+          CLA
+          RET
+CORR3:    POP
+          POP
+          LD    #0x1
+          ST    CHECK3
+          CLA
+          RET
+
+; --- TEST 4: Заём (Флаг C) ---
+TEST4:    LD    ARG7
+          PUSH
+          LD    ARG8
+          PUSH
+          WORD  0x0F03      ; Выполняем SUBSP
+          BCS   CORR4       ; Если был заём (C=1), тест пройден
+          POP
+          POP
+          CLA
+          RET
+CORR4:    POP
+          POP
+          LD    #0x1
+          ST    CHECK4
+          CLA
+          RET
+
+END
+
+# --- Section 3: Execute and Verify ---
+
+# Set the run mode to "work" (not step-by-step).
+run
+
+# Start the execution.
+start
+
+# After the program halts, dump the memory area containing our results.
+# We are interested in addresses 03F0 through 03F4.
+d 03F0

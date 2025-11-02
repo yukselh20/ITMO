@@ -1,0 +1,94 @@
+        ORG     0x000
+
+ArrayBaseAddr:  WORD    0x6dd
+ResultDestAddr: WORD    0x400
+N_elements:     WORD    14
+
+CurrentElPtr:   WORD    ?
+TMP_Mi:         WORD    ?
+TMP_4Mi:        WORD    ?
+
+SIGN_BIT_MASK:  WORD    0x1000
+SIGN_FILL:      WORD    0xE000
+MASK_LOW:       WORD    0x1FFF
+
+PositiveHigh:   WORD    0x0000
+NegativeHigh:   WORD    0xFFFF
+Const2961:      WORD    2961
+
+START:
+        LD      ArrayBaseAddr
+        ST      CurrentElPtr
+
+PROCESS_LOOP:
+        LD      N_elements
+        CMP     #0
+        BEQ     STOP
+
+        LD      (CurrentElPtr)
+        AND     SIGN_BIT_MASK
+        BEQ     Mi_13bit_Positive
+
+Mi_13bit_Negative:
+        LD      (CurrentElPtr)
+        OR      SIGN_FILL
+        JUMP    Mi_13bit_Processed
+
+Mi_13bit_Positive:
+        LD      (CurrentElPtr)
+        AND     MASK_LOW
+
+Mi_13bit_Processed:
+        ST      TMP_Mi
+        ASL
+        ASL
+        ST      TMP_4Mi
+        ASL
+        ADD     TMP_4Mi
+        ADD     TMP_Mi
+        ADD     Const2961
+
+        ST      (ResultDestAddr)
+
+        CMP     #0
+        BPL     STORE_HIGH_POS
+
+STORE_HIGH_NEG:
+        LD      NegativeHigh
+        JUMP    STORE_HIGH_SAVE
+
+STORE_HIGH_POS:
+        LD      PositiveHigh
+
+STORE_HIGH_SAVE:
+        PUSH
+        LD      ResultDestAddr
+        INC
+        ST      ResultDestAddr
+        POP
+        ST      (ResultDestAddr)
+
+END_ITERATION:
+        LD      CurrentElPtr
+        INC
+        ST      CurrentElPtr
+
+        LD      ResultDestAddr
+        INC
+        ST      ResultDestAddr
+
+        LD      N_elements
+        DEC
+        ST      N_elements
+
+        JUMP    PROCESS_LOOP
+
+STOP:
+        HLT
+
+        ORG     0x400
+RESULT_ARRAY: WORD 28 DUP (?)
+
+        ORG     0x6dd
+INPUT_ARRAY:
+        WORD    1, -1, 10, -10, 100, -100, 0, 5, -5, 20, -20, 4095, -4096, 13

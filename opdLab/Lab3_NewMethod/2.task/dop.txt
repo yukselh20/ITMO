@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+echo "
+2CB a
+0005 w
+02E0 w
+A000 w
+E000 w
+0000 w
+0200 w
+AF0F w
+EEFB w
+4EF8 w
+EEF8 w
+AAF6 w
+F20A w
+62CB w
+F002 w
+F204 w
+C2D5 w
+AF01 w
+42CF w
+E2CF w
+82CE w
+C2D5 w
+0100 w
+42CB w
+F002 w
+F304 w
+C2E1 w
+AF01 w
+42CF w
+E2CF w
+82CE w
+C2D5 w
+0100 w
+000A w
+000C w
+000B w
+F004 w
+F005 w
+F010 w
+0005 w
+0007 w
+F008 w
+F00F w
+F002 w
+F001 w
+0015 w
+0012 w
+2D0 a
+
+sl 0
+
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c 
+" | java -jar -Dmode=cli bcomp-ng.jar

@@ -1,0 +1,107 @@
+; =================================================================
+; FINAL CORRECTED Test Program for SUBSP Command (Opcode 0F03)
+; Variant: 9
+; =================================================================
+
+          ORG   0x03F0      ; 
+
+; --- Area for test results ---
+RESULT:   WORD  0           ; Final result (1 = all tests passed)
+CHECK1:   WORD  0           ; Result of Test 1 (simple subtraction)
+CHECK2:   WORD  0           ; Result of Test 2 (negative result, N flag)
+CHECK3:   WORD  0           ; Result of Test 3 (overflow, V flag)
+CHECK4:   WORD  0           ; Result of Test 4 (borrow, C flag)
+
+; --- Storage for results from the stack ---
+RES_TMP:  WORD  0
+
+; --- Arguments for tests ---
+; Test 1: 5 - 3 = 2. Expected Flags: NZVC=0001 (C=1 because no borrow)
+ARG1_A:   WORD  5
+ARG1_B:   WORD  3
+ARG1_RES: WORD  2
+
+; Test 2: 3 - 5 = -2. Expected Flags: N=1, C=0 (borrow)
+ARG2_A:   WORD  3
+ARG2_B:   WORD  5
+
+; Test 3: 0x7FFF - (-0x8000) = Overflow. Expected Flags: V=1
+ARG3_A:   WORD  0x7FFF
+ARG3_B:   WORD  0x8000
+
+; Test 4: 2 - 3 = -1. Expected Flags: C=0 (borrow)
+ARG4_A:   WORD  2
+ARG4_B:   WORD  3
+
+; =================================================================
+; MAIN EXECUTION BLOCK
+; =================================================================
+START:
+; --- Test 1: Simple subtraction 5 - 3 = 2 ---
+          LD    ARG1_A
+          PUSH
+          LD    ARG1_B
+          PUSH
+          WORD  0x0F03      ; <<< EXECUTE SUBSP >>>
+          POP
+          ST    RES_TMP
+          CMP   ARG1_RES
+          BNE   TEST2
+          LD    #1
+          ST    CHECK1
+TEST2:
+; --- Test 2: Negative result 3 - 5 = -2 (checks N flag) ---
+          LD    ARG2_A
+          PUSH
+          LD    ARG2_B
+          PUSH
+          WORD  0x0F03
+          BMI   T2_PASS
+          JUMP  T2_FAIL
+T2_PASS:  LD    #1
+          ST    CHECK2
+T2_FAIL:  POP
+
+TEST3:
+; --- Test 3: Overflow check (checks V flag) ---
+          LD    ARG3_A
+          PUSH
+          LD    ARG3_B
+          PUSH
+          WORD  0x0F03
+          BVS   T3_PASS
+          JUMP  T3_FAIL
+T3_PASS:  LD    #1
+          ST    CHECK3
+T3_FAIL:  POP
+
+TEST4:
+; --- Test 4: Borrow check (checks C flag) ---
+          LD    ARG4_A
+          PUSH
+          LD    ARG4_B
+          PUSH
+          WORD  0x0F03
+          BCC   T4_PASS     
+          JUMP  T4_FAIL
+T4_PASS:  LD    #1
+          ST    CHECK4
+T4_FAIL:  POP
+
+; --- Final aggregation of results ---
+FINAL_CHECK:
+          LD    #1
+          AND   CHECK1
+          AND   CHECK2
+          AND   CHECK3
+          AND   CHECK4
+          ST    RESULT
+
+STOP:     HLT
+
+
+asm
+kod
+END
+run
+start

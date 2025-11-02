@@ -1,0 +1,124 @@
+# =============================================================
+# BЭВМ-NG Simulator Script for Lab Work #7 (Cleaned Assembly)
+# =============================================================
+
+# --- Section 1: Load the Microprogram for SUBSP ---
+ma E0
+mw 81C4FC1002
+mw 80C4021002
+mw 80C4011002
+mw 0080009008
+mw 0100000000
+mw 0020009001
+mw 0080009408
+mw 0100000000
+mw 0001E09621
+mw 0088009208
+mw 0200000000
+mw 80C4101040
+
+# --- Section 2: Load the Assembly Test Program ---
+asm
+ORG   0x03F0
+RESULT:   WORD  0
+CHECK1:   WORD  0
+CHECK2:   WORD  0
+CHECK3:   WORD  0
+CHECK4:   WORD  0
+RES1:     WORD  0
+RES2:     WORD  0
+RES3:     WORD  0
+RES4:     WORD  0
+ARG1:     WORD  0x1010
+ARG2:     WORD  0x0010
+ARG3:     WORD  0x0000
+ARG4:     WORD  0x0004
+ARG5:     WORD  0x7FFF
+ARG6:     WORD  0x8000
+ARG7:     WORD  0x0000
+ARG8:     WORD  0x0001
+START:    CLA
+          CALL  TEST1
+          CALL  TEST2
+          CALL  TEST3
+          CALL  TEST4
+          LD    #0x1
+          AND   CHECK1
+          AND   CHECK2
+          AND   CHECK3
+          AND   CHECK4
+          ST    RESULT
+STOP:     HLT
+TEST1:    LD    ARG1
+          PUSH
+          LD    ARG2
+          PUSH
+          WORD  0x0F03
+          POP
+          ST    RES1
+          CMP   #0x1000
+          BEQ   CORR1
+          POP
+          POP
+          CLA
+          RET
+CORR1:    POP
+          POP
+          LD    #0x1
+          ST    CHECK1
+          CLA
+          RET
+TEST2:    LD    ARG3
+          PUSH
+          LD    ARG4
+          PUSH
+          WORD  0x0F03
+          BMI   CORR2
+          POP
+          POP
+          CLA
+          RET
+CORR2:    POP
+          POP
+          LD    #0x1
+          ST    CHECK2
+          CLA
+          RET
+TEST3:    LD    ARG5
+          PUSH
+          LD    ARG6
+          PUSH
+          WORD  0x0F03
+          BVS   CORR3
+          POP
+          POP
+          CLA
+          RET
+CORR3:    POP
+          POP
+          LD    #0x1
+          ST    CHECK3
+          CLA
+          RET
+TEST4:    LD    ARG7
+          PUSH
+          LD    ARG8
+          PUSH
+          WORD  0x0F03
+          BCS   CORR4
+          POP
+          POP
+          CLA
+          RET
+CORR4:    POP
+          POP
+          LD    #0x1
+          ST    CHECK4
+          CLA
+          RET
+END
+
+# --- Section 3: Execute and Verify ---
+run
+start
+d 03F0

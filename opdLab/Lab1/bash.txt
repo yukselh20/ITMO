@@ -1,0 +1,103 @@
+#! /bin/bash
+
+#creating directories
+
+mkdir lab0 
+mkdir lab0/bisharp4 
+mkdir lab0/bisharp4/togepi lab0/bisharp4/cinccino lab0/bisharp4/raticate 
+mkdir lab0/torterra7 lab0/torterra7/metang lab0/torterra7/pineco lab0/torterra7/charmander 
+mkdir lab0/venonat8 lab0/venonat8/tepig lab0/venonat8/skuntank
+
+
+#creating files 
+echo -e 'Тип покемона\tGROUND DRAGON\n' > lab0/bisharp4/flygon
+echo -e 'Способности\tMud-Slap\nHeadbutt Metal Claw Iron Defence Roar Take Down Iron Head Protect\nMetal Sound Iron Tail Autotomize Heavy Slamm Double-Edge Metal\nBurst\n' > lab0/bisharp4/lairon
+echo -e 'Ходы\tAqua Tail Body Slam Covet Dynamicpunch Fire Punch\nFocus Punch Fury Cutter Helping Hand Hyper Voice Ice Punch Iron Tail\nKnock Off Last Resort Mud-Slap Rollout Shock Wave Sleep Talk Snore\nSucker Punch Super Fang Swift Thunderpunch Trick Water Pulse\nUproar\n' > lab0/bisharp4/furret
+echo -e 'Ходы\tAqua Tail Bite Bug Bite Dark Pulse Fire Fang\nFury Cutter Ice Fang Iron Tail Knock Off Mud-Slap Pin Missile Rock\nClimb Sleep Talk Snore Thunder Fang\n' > lab0/drapion0
+echo -e 'weight=66.1\nheight=43.0 atk=6 def=6\n' > lab0/pidgeotto8
+echo -e 'satk=11 sdef=8\nspd=10\n' > lab0/salamence0
+echo -e 'satk=4 sdef=5 spd=4\n' > lab0/torterra7/gulpin
+echo -e 'Тип покемона\tGRASS\nGROUND\n' > lab0/torterra7/torterra
+echo -e 'Тип диеты\tCarnivore\n' > lab0/venonat8/yanmega
+echo -e 'Тип диеты\nPhototroph\n' > lab0/venonat8/shroomish
+echo -e 'Способности\tPound Yawn Poison Gas Sludge Amnesia\nEncore Toxic Acid Spray Spit Up Stockpile Swallow Sludge Bomb Gastro\nAcid Wring Out Gunk Shot\n' > lab0/venonat8/gulpin
+echo -e 'weight=7.9 height=31.0 atk=6\ndef=6\n' > lab0/venonat8/masquerain
+
+#changing permissions of the files
+chmod 524 lab0/bisharp4
+chmod ug=r,o=- lab0/bisharp4/flygon
+chmod 363 lab0/bisharp4/togepi
+chmod u=r,go=- lab0/bisharp4/lairon
+chmod ug=wrx,o=- lab0/bisharp4/cinccino
+chmod 004 lab0/bisharp4/furret
+chmod 764 lab0/bisharp4/raticate
+chmod u=wr,g=r,o=- lab0/drapion0
+chmod 400 lab0/pidgeotto8
+chmod u=r,go=- lab0/salamence0
+chmod ug=wx,o=rwx lab0/torterra7
+chmod 600 lab0/torterra7/gulpin
+chmod 512 lab0/torterra7/metang
+chmod 400 lab0/torterra7/torterra
+chmod 577 lab0/torterra7/pineco
+chmod u=wx,g=rx,o=rwx lab0/torterra7/charmander
+chmod ug=rwx,o=- lab0/venonat8
+chmod 335 lab0/venonat8/tepig
+chmod u=r,go=- lab0/venonat8/yanmega
+chmod u=rx,g=rwx,o=x lab0/venonat8/skuntank
+chmod 620 lab0/venonat8/shroomish
+chmod 006 lab0/venonat8/gulpin
+chmod 600 lab0/venonat8/masquerain
+
+#copying files and creating links
+chmod -R u+rwx lab0
+ln -s /home/studs/s408078/lab0/bisharp4 Copy_41
+cat lab0/torterra7/gulpin lab0/venonat8/gulpin > lab0/salamence0_84
+ln -s /home/studs/s408078/lab0/salamence0 lab0/venonat8/masquerainsalamence
+cp lab0/pidgeotto8 lab0/bisharp4/laironpidgeotto
+ln /lab0/drapion0 lab0/bisharp4/furretdrapion
+cp -r lab0/torterra7 lab0/bisharp4/raticate
+cp lab0/salamence0 lab0/venonat8/skuntank
+
+#changing permissions of the files
+chmod 524 lab0/bisharp4
+chmod ug=r,o=- lab0/bisharp4/flygon
+chmod 363 lab0/bisharp4/togepi
+chmod u=r,go=- lab0/bisharp4/lairon
+chmod ug=wrx,o=- lab0/bisharp4/cinccino
+chmod 004 lab0/bisharp4/furret
+chmod 764 lab0/bisharp4/raticate
+chmod u=wr,g=r,o=- lab0/drapion0
+chmod 400 lab0/pidgeotto8
+chmod u=r,go=- lab0/salamence0
+chmod ug=wx,o=rwx lab0/torterra7
+chmod 600 lab0/torterra7/gulpin
+chmod 512 lab0/torterra7/metang
+chmod 400 lab0/torterra7/torterra
+chmod 577 lab0/torterra7/pineco
+chmod u=wx,g=rx,o=rwx lab0/torterra7/charmander
+chmod ug=rwx,o=- lab0/venonat8
+chmod 335 lab0/venonat8/tepig
+chmod u=r,go=- lab0/venonat8/yanmega
+chmod u=rx,g=rwx,o=x lab0/venonat8/skuntank
+chmod 620 lab0/venonat8/shroomish
+chmod 006 lab0/venonat8/gulpin
+chmod 600 lab0/venonat8/masquerain
+
+wc -l lab0/p* lab0/*/p* 2> /tmp/errorH.txt | sort -nr  
+ls -lR lab0 2> /tmp/errorsH.txt | grep 'on' | tail -n 3 | sort -rk2 
+cat lab0/torterra7/gulpin lab0/torterra7/torterra lab0/venonat8/yanmega | sort -r 2>&1
+ls -R lab0/venonat8 | sort 2>&1 #Yani, komuttan çıkan hatalar, normal çıktılarla birlikte görüntülenir.
+ls -lR lab0 | grep 'o$' | tail -n 3| sort -k2 2>&1
+wc -l lab0/f* lab0/*/f* | sort
+
+chmod 777 lab0/pidgeotto8
+chmod 777 lab0/venonat8/yanmega
+chmod -R 777 lab0/bisharp4
+chmod 777 lab0/bisharp4/togepi
+
+rm lab0/pidgeotto8
+rm lab0/venonat8/yanmega
+rm Copy_41
+rm lab0/bisharp4/furretdrapion
+rm -r lab0/bisharp4
+rmdir lab0/bisharp4/togepi

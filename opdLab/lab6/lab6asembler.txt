@@ -1,0 +1,118 @@
+; ============================================================
+; Interrupt Vector Table
+; ============================================================
+            ORG     0x000
+V0:         WORD    $DEFAULT_INT_HANDLER, 0x0180 ; PS = 0001 1000 0000 (Work, Prog, INT disabled)
+V1:         WORD    $INT1_HANDLER, 0x0180        ; For VU-1
+V2:         WORD    $DEFAULT_INT_HANDLER, 0x0180 ; For VU-2 (Unused in this specific task logic, but vector exists)
+V3:         WORD    $INT3_HANDLER, 0x0180        ; For VU-3
+V4:         WORD    $DEFAULT_INT_HANDLER, 0x0180
+V5:         WORD    $DEFAULT_INT_HANDLER, 0x0180
+V6:         WORD    $DEFAULT_INT_HANDLER, 0x0180
+V7:         WORD    $DEFAULT_INT_HANDLER, 0x0180
+
+
+
+DEFAULT_INT_HANDLER: IRET  
+
+            ORG     0x030       ; Start data/code after vectors
+MIN_ODZ_X:  WORD    -30         ; -30 decimal for X
+MAX_ODZ_X:  WORD    33          ;  33 decimal for X (This is the value to write if X goes out of bounds)
+CONST_2:    WORD    2
+CONST_8:    WORD    8
+TEMP_STORAGE_RD_VU3: WORD 0     ; Temporary storage for DR_VU3 value in INT3_HANDLER
+
+            ORG     0x033       ; As per your variant
+X:          WORD    0           ; Initial value of X (e.g., 0 for testing)
+
+
+        ORG     0x050       ; Arbitrary start address for the main program logic
+START:  
+	DI                  ; Disable interrupts during setup
+        CLA                 ; Clear Accumulator (to get 0 for MR configuration)
+        OUT     0x1         ; MR for VU-0 (Timer)
+        OUT     0x5         ; MR for VU-2
+        OUT     0xB         ; MR for VU-4
+        OUT     0xE         ; MR for VU-5
+        OUT     0x12        ; MR for VU-6
+        OUT     0x16        ; MR for VU-7
+        OUT     0x1A        ; MR for VU-8
+        OUT     0x1E        ; MR for VU-9
+        ; Add more OUT 0x.. for other VUs if they exist and need disabling
+
+        ; Configure MR for VU-1 (Interrupt Vector 1)
+        LD      #0x9        ; 0x9 = 1001_binary (Enable interrupt AND Vector #1)
+        OUT     0x3         ; Write to MR of VU-1
+
+        ; Configure MR for VU-3 (Interrupt Vector 3)
+        LD      #0xB        ; 0xB = 1011_binary (Enable interrupt AND Vector #3)
+        OUT     0x7         ; Write to MR of VU-3
+
+        EI                  ; Enable interrupts now that setup is done
+
+MAIN_LOOP: 
+	DI                  ; --- Start of ATOMIC operation for X = X - 2 ---
+        LD      X           ; Load current X into AC
+        SUB     CONST_2     ; AC = X - 2
+        CALL    CHECK_X_ODZ ; Check if AC (new X candidate) is within ODZ, correct AC if not
+        ST      X           ; Store modified (and possibly corrected) X from AC
+        EI                  ; --- End of ATOMIC operation ---
+        ; NOP               ; Optional: small delay for observation or to allow interrupts
+        JUMP    MAIN_LOOP
+
+
+CHECK_X_ODZ: 
+	CMP     MIN_ODZ_X       ; Compare AC with MIN_ODZ_X. Sets N if AC < MIN_ODZ_X
+        BMI     LOAD_MAX_VALUE  ; If AC < MIN_ODZ_X (N=1), it's out of bounds, load MAX_ODZ_X
+
+        CMP     MAX_ODZ_X       ; Compare AC with MAX_ODZ_X.
+        BEQ     ODZ_EXIT        ; If AC == MAX_ODZ_X, it's in bounds.
+        BPL     LOAD_MAX_VALUE  ; If AC > MAX_ODZ_X (AC - MAX_ODZ_X is positive, N=0), it's out of bounds, load MAX_ODZ_X
+                                ; BPL (Branch if PLus) branches if N=0.
+
+ODZ_EXIT: RET                     ; AC is within ODZ or was equal to MAX_ODZ_X
+
+
+LOAD_MAX_VALUE: 
+	LD      MAX_ODZ_X       ; Load MAX_ODZ_X into AC because original AC was out of bounds
+        RET
+
+INT1_HANDLER: 
+	HLT		 ; 
+	DI               ; Disable further interrupts (though PS loaded from vector usually does this)
+        PUSH             ; Save current Accumulator
+        
+        LD      X           ; Load current X into AC
+        ASL                 ; AC = 2*X
+        ASL                 ; AC = 4*X
+        SUB     CONST_8     ; AC = 4*X - 8
+        ; The problem statement implies X is within an ODZ such that F(X) fits 8-bit signed.
+        ; X is -30 to 33. F(X) is 4*(-30)-8 = -128. F(X) is 4*(33)-8 = 132-8 = 124.
+        ; So, F(X) is in range [-128, 124], which fits 8-bit signed. No clipping needed for F(X) itself.
+	HLT			;breakpoint for checking
+        OUT     0x2         ; Output F(X) result to VU-1 Data Register (assumed port 0x2)
+        
+        POP            ; Restore original Accumulator
+        EI                  ; Re-enable interrupts before returning
+        IRET
+
+
+INT3_HANDLER: 
+	HLT
+	DI                  ; Disable further interrupts
+        PUSH            ; Save current Accumulator
+        
+        IN      0x6         ; Read from VU-3 Data Register (port 0x6) into AC (lower 8 bits)
+        SXTB                		; Sign-extend AC from 8-bit to 16-bit (AC now holds sign-extended DR_VU3)
+
+        SUB     X                   ; AC = (sign-extended DR_VU3) - X
+                                    ; This is the new candidate value for X
+	HLT
+        CALL    CHECK_X_ODZ     ; Check if AC (the new X candidate) is within ODZ, correct AC if not
+        HLT
+	ST      X               ; Store new (and possibly corrected) value into X
+        
+        POP                	; Restore original Accumulator
+        EI                      ; Re-enable interrupts before returning
+        IRET
+
